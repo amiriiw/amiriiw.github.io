@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="">Home</a>
+            <a href="">Contacts</a>
+            <a href="">Info</a>
+        </nav>
+    </header>
+
+    <!-- carousel -->
+    <div class="carousel">
+        <!-- list item -->
+        <div class="list">
+            <div class="item">
+                <img src="image/me.jpg">
+                <div class="content">
+                    <div class="author">amiriiw</div>
+                    <div class="title">Backend developer</div>
+                    <div class="topic">Introduction</div>
+                    <div class="des">
+                        <!-- lorem 50 -->
+                        a Backend and AI developer in PBDP.co Tabriz in addition to my technical skills, I am always seeking to learn and update my knowledge. Through continuous study and participation in specialized events, I keep pace with the latest developments and technologies in the industry.
+                    </div>
+                    <div class="buttons">
+                        <button><a href="mailto:amirnesabi898@gmail.com">Email</a></button>
+                        <button><a href="https://t.me/iiwscorpion">Telegram</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/speech_recognition.jpg">
+                <div class="content">
+                    <div class="author">amiriiw</div>
+                    <div class="title">Work samples</div>
+                    <div class="topic">Speech recognition</div>
+                    <div class="des">
+                        A snake game that is controlled by voice and speech recognition with TensorFlow methods is used to recognize it.
+                    </div>
+                    <div class="buttons">
+                        <button><a href="https://github.com/amiriiw/speech_recognition">Source code</a></button>
+                        <button>YouTube channel</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/web_crawler.jpg">
+                <div class="content">
+                    <div class="author">amiriiw</div>
+                    <div class="title">Work samples</div>
+                    <div class="topic">web crawler</div>
+                    <div class="des">
+                        a web crawler with srapy to crawl the coins info from coinmarketcap to access easily to coins info in groups and individually.
+                    </div>
+                    <div class="buttons">
+                        <button><a href="https://github.com/amiriiw/coin_crawler">Source code</a></button>
+                        <button>YouTube channel</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/GitHub_banner.jpg">
+                <div class="content">
+                    <div class="author">amiriiw</div>
+                    <div class="title">Work samples</div>
+                    <div class="topic">Other Sources</div>
+                    <div class="des">
+                        i Share the basic of my code in my GitHub account, and you all can see what other things I can do, and I promise it's more than what you see in there.
+                    </div>
+                    <div class="buttons">
+                        <button><a href="https://github.com/amiriiw?tab=repositories">Source code</a></button>
+                        <button>YouTube channel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- list thumnail -->
+        <div class="thumbnail">
+            <div class="item">
+                <img src="image/me_slide.png">
+                <div class="content">
+                    <div class="title">
+                        Amir nesabi
+                    </div>
+                    <div class="description">
+                        Introduction
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/speech_recognition_slide.jpg">
+                <div class="content">
+                    <div class="title">
+                        Name Slider
+                    </div>
+                    <div class="description">
+                        Description
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/web_crawler_slide.jpg">
+                <div class="content">
+                    <div class="title">
+                        Name Slider
+                    </div>
+                    <div class="description">
+                        Description
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="image/Github_banner_slide.png">
+                <div class="content">
+                    <div class="title">
+                        Name Slider
+                    </div>
+                    <div class="description">
+                        Description
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- next prev -->
+
+        <div class="arrows">
+            <button id="prev"><</button>
+            <button id="next">></button>
+        </div>
+        <!-- time running -->
+        <div class="time"></div>
+    </div>
+
+    <script>
+        let nextDom = document.getElementById('next');
+        let prevDom = document.getElementById('prev');
+
+        let carouselDom = document.querySelector('.carousel');
+        let SliderDom = carouselDom.querySelector('.carousel .list');
+        let thumbnailBorderDom = document.querySelector('.carousel .thumbnail');
+        let thumbnailItemsDom = thumbnailBorderDom.querySelectorAll('.item');
+        let timeDom = document.querySelector('.carousel .time');
+
+        thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
+        let timeRunning = 3000;
+        let timeAutoNext = 7000;
+
+        nextDom.onclick = function(){
+            showSlider('next');
+        }
+
+        prevDom.onclick = function(){
+            showSlider('prev');
+        }
+        let runTimeOut;
+        let runNextAuto = setTimeout(() => {
+            next.click();
+        }, timeAutoNext)
+        function showSlider(type){
+            let  SliderItemsDom = SliderDom.querySelectorAll('.carousel .list .item');
+            let thumbnailItemsDom = document.querySelectorAll('.carousel .thumbnail .item');
+
+            if(type === 'next'){
+                SliderDom.appendChild(SliderItemsDom[0]);
+                thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
+                carouselDom.classList.add('next');
+            }else{
+                SliderDom.prepend(SliderItemsDom[SliderItemsDom.length - 1]);
+                thumbnailBorderDom.prepend(thumbnailItemsDom[thumbnailItemsDom.length - 1]);
+                carouselDom.classList.add('prev');
+            }
+            clearTimeout(runTimeOut);
+            runTimeOut = setTimeout(() => {
+                carouselDom.classList.remove('next');
+                carouselDom.classList.remove('prev');
+            }, timeRunning);
+
+            clearTimeout(runNextAuto);
+            runNextAuto = setTimeout(() => {
+                next.click();
+            }, timeAutoNext)
+        }
+    </script>
+</body>
+</html>
