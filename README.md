@@ -48,7 +48,6 @@ The portfolio carousel project demonstrates the following:
 
 - **index.html**: The main HTML file that contains the structure of the web page.
 - **style.css**: The CSS file that styles the web page, including the carousel and its animations.
-- **script.js**: The JavaScript file that controls the carousel's interactivity and animations.
 
 ## How to Run
 
