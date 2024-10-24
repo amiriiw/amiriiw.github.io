@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #16161a;
+            padding: 0;
+            margin: 0;
+        }
+        header {
+            background-color: #333;
+            text-align: center;
+            padding: 10px 0;
+            color: white;
+        }
+        nav .header_links {
+            justify-content: center;
+            display: flex;
+        }
+        .nav_links {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            gap: 20px;
+            margin: 0;
+        }
+        .nav_link a {
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+        }
+        .nav_link a:hover {
+            text-decoration: underline;
+        }
+        .section {
+            padding: 50px 20px;
+        }
+        .title {
+            margin-bottom: 30px;
+            text-align: center;
+            color: #ffffff;
+            font-size: 24px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .d-grid {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: grid;
+            gap: 20px;
+        }
+        .article {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: rgb(255, 255, 255);
+            background-color: #1c1c1c;
+            transition: transform 0.3s;
+            text-decoration: none;
+            border-radius: 10px;
+            text-align: center;
+            padding: 15px;
+        }
+        .article:hover {
+            transform: translateY(-5px);
+        }
+        .article-image {
+            border-radius: 10px;
+            object-fit: cover;
+            height: 150px;
+            width: 200px; 
+        }
+        .tag-name {
+            margin-bottom: 15px;
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 16px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="header_links">
+                <ul class="nav_links">
+                    <li class="nav_link"><a href="https://amiriiw.github.io/">Home</a></li>
+                    <li class="nav_link"><a href="../templates/Docs.html">Document</a></li>
+                    <li class="nav_link"><a href="../templates/Projects.html">Project's</a></li> 
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <section class="popular-tags section">
+        <h2 class="title section-title" data-name="Live project's">&nbsp;&nbsp;&nbsp;Sample project's</h2>
+        <div class="container">
+            <div class="popular-tags-container d-grid">
+                <a href="https://github.com/amiriiw/coin_crawler" class="article">
+                    <span class="tag-name">Coin crawler</span>
+                    <img src="../dataset/imgs/02.png" class="article-image">
+                </a>
+                <a href="https://github.com/amiriiw/Coinifo_telegram_bot" class="article">
+                    <span class="tag-name">Coinifo telegram bot</span>
+                    <img src="../dataset/imgs/03.jpg" class="article-image">
+                </a>
+                <a href="https://github.com/amiriiw/gesture_recognition" class="article">
+                    <span class="tag-name">Gesture recognition</span>
+                    <img src="../dataset/imgs/04.jpg" class="article-image">
+                </a>
+                <a href="https://github.com/amiriiw/text_classification" class="article">
+                    <span class="tag-name">Text classification</span>
+                    <img src="../dataset/imgs/05.png" class="article-image">
+                </a>
+                <a href="https://github.com/amiriiw/digit_classification" class="article">
+                    <span class="tag-name">Digit classification</span>
+                    <img src="../dataset/imgs/06.jpg" class="article-image">
+                </a>
+                <a href="https://github.com/amiriiw/speech_recognition" class="article">
+                    <span class="tag-name">Speech recognition</span>
+                    <img src="../dataset/imgs/07.png" class="article-image">
+                </a>
+                <a href="https://github.com/amiriiw/image_classification" class="article">
+                    <span class="tag-name">Image classification</span>
+                    <img src="../dataset/imgs/08.png" class="article-image">
+                </a>
+                <a href="https://github.com/amiriiw/text_emotion_detection" class="article">
+                    <span class="tag-name">Text emotion detection</span>
+                    <img src="../dataset/imgs/09.png" class="article-image">
+                </a>
+                <a href="https://github.com/amiriiw/text_auto_complete" class="article">
+                    <span class="tag-name">Text auto complete</span>
+                    <img src="../dataset/imgs/10.jpg" class="article-image">
+                </a>
+            </div>
+        </div>
+    </section>
+    <script>
+        const selectElement = (selector) => {
+            const element = document.querySelector(selector);
+            if (element) return element;
+            throw new Error(`Something went wrong! Make sure that ${selector} exists/is typed correctly.`);};
+        const formOpenBtn = selectElement('#search-icon');
+        const formCloseBtn = selectElement('#form-close-btn');
+        const searchContainer = selectElement('#search-form-container');
+        formOpenBtn.addEventListener('click', () => searchContainer.classList.add('activated'));
+        formCloseBtn.addEventListener('click', () => searchContainer.classList.remove('activated'));
+        window.addEventListener('keyup', (event) => {
+            if (event.key === 'Escape') searchContainer.classList.remove('activated');
+        });
+    </script>
+</body>
+</html>

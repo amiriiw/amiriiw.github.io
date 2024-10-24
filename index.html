@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>amiriiw</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,800">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        *, *::before, *::after {
+            scroll-behavior: smooth;
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #16161a;
+            color: #fff;
+        }
+        header nav {
+            justify-content: space-between;
+            animation: fadeInDown .8s;
+            flex-direction: row;
+            align-items: center;
+            padding: 20px 40px;
+            display: flex;
+        }
+        header nav .navigation_links {
+            display: none;
+        }
+        section.hero_section .navigation_links ul {
+            justify-content: center;
+            flex-direction: row;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            display: flex;
+        }
+        section.hero_section .navigation_links ul li {
+            list-style-type: none;
+        }
+        section.hero_section .navigation_links ul li a {
+            text-decoration: none;
+            transition: 0.3s all;
+            padding: 5px 12px;
+            color: #a6a8b8;
+            font-size: 15px;
+            outline: none;
+        }
+        section.hero_section .navigation_links ul li a:hover {
+            color: white;
+        }
+        section.hero_section {
+            justify-content: center;
+            animation: fadeInUp .8s;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 70vh;
+            display: flex;
+        }
+        section.hero_section img {
+            border: 10px solid #21222b93;
+            border-radius: 100%;
+            margin-bottom: 10px;
+            object-fit: cover;
+            cursor: pointer;
+            height: 150px;
+            width: 150px;
+        }
+        section.hero_section span {
+            font-weight: bold;
+            color: #fffffe;
+            font-size: 30px;
+        }
+        section.hero_section p {
+            animation: typewriter 4s steps(56) 1s 1 normal both, blinkTextCursor 530ms steps(44) infinite normal;
+            border-right: 2px solid rgba(255, 255, 255, .75);
+            white-space: nowrap;
+            margin-bottom: 20px;
+            position: relative;
+            margin-top: 30px;
+            overflow: hidden;
+            color: #94a1b2;
+            font-size: 13px;
+            top: 50%;
+        }
+        @keyframes typewriter {
+            from {
+                width: 0;
+            }
+            to {
+                width: 32em;
+            }
+        }
+        @keyframes blinkTextCursor {
+            from {
+                border-right-color: rgba(255, 255, 255, .75);
+            }
+            to {
+                border-right-color: transparent;
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                transform: translate3d(0, 150px, 0)
+            }
+            to {
+                transform: translate3d(0, 0, 0);
+                opacity: 1
+            }
+        }
+        @keyframes fadeInDown {
+            from {
+                transform: translate3d(0, -150px, 0)
+            }
+            to {
+                transform: translate3d(0, 0, 0);
+                opacity: 1
+            }
+        }
+        @media only screen and (max-width: 630px) {
+            header nav {
+                flex-direction: column;
+                display: flex;
+            }
+        }
+        @media only screen and (max-width: 320px) {
+            section.hero_section .navigation_links ul {
+                justify-content: center;
+                align-items: center;
+                flex-direction: row;
+                text-align: center;
+                flex-wrap: wrap;
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+    </header>
+    <section class="hero_section">
+        <img src="dataset/imgs/0.jpg" alt="" srcset="">
+        <span>amiriiw</span>
+        <p>AI and Backend Developer & Linux user and Open source lover</p>
+        <nav>
+            <div class="navigation_links">
+                <ul class="navigation_menu">
+                    <li class="menu_item"><a href="templates/Docs.html">Documents</a></li>
+                    <li class="menu_item"><a href="https://amiriiw.github.io/">Home</a></li>
+                    <li class="menu_item"><a href="templates/Projects.html">Projects</a></li> 
+                </ul>
+            </div>
+        </nav>
+    </section>
+</body>
+</html>
