@@ -382,7 +382,7 @@ async function fetchAndRenderSection(username, repo, path, containerSelector, ca
             articleCard.className = 'articleCard';
 
             const imageUrl = `https://raw.githubusercontent.com/${username}/${repo}/main/${item.path}`;
-            const mdUrl = `https://github.com/${username}/${repo}/blob/main/${item.path.replace('imgs', 'Magazines').replace('.png', '.md')}`;
+            const mdUrl = `https://github.com/${username}/${repo}/blob/main/${item.path.replace('imgs/', '').replace('.png', '.md')}`;
 
             const [category, ...titleParts] = item.name.replace('.png', '').split('-');
             const formattedTitle = titleParts.join(' ').replace(/([A-Z])/g, ' $1').trim();
