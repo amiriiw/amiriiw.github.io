@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docs Page</title>
+    <style>
+        * {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            text-decoration: none;
+            padding: 0;
+            margin: 0;
+        }
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: #0C0C0C;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #272727;
+            border-radius: 20px;
+        }
+        @media screen and (max-width: 700px) {
+            :root {
+                --line-paragrafo: 25px;
+                --titulo--head: 35px;
+                --line-titulo: 65px;
+                --paragrafo: 15px;
+            }
+            .coverSection {
+                padding: 0 10px;
+                height: 100vh;
+            }
+            .articleTexts {
+                width: 676px;
+                align-items: center;
+            }
+            .articleTexts .mainTitle {
+                text-align: center;
+            }
+
+            .articleTexts .introText {
+                text-align: justify;
+            }
+            .features,
+            .reviews {
+                padding-left: 10px;
+            }
+            @keyframes slideInFrom {
+                0% {
+                    transform: translateY(100%);
+                }
+
+                100% {
+                    transform: translateY(0);
+                }
+            }
+        }
+        @media screen and (min-width: 700px) {
+            :root {
+                --titulo--head: 35px;
+                --paragrafo: 15px;
+                --line-titulo: 65px;
+                --line-paragrafo: 25px;
+            }
+            .coverSection {
+                height: 100vh;
+                padding-left: 10%;
+            }
+            .articleTexts {
+                width: 676px;
+            }
+            .features,
+            .reviews {
+                padding-left: 10%;
+            }
+            @keyframes slideInFrom {
+                0% {
+                    transform: translateX(100%);
+                }
+                100% {
+                    transform: translateX(0);
+                }
+            }
+        }
+        @media screen and (min-width: 1501px) {
+            :root {
+                --titulo--head: 55px;
+                --paragrafo: 18px;
+                --line-titulo: 80px;
+                --line-paragrafo: 28px;
+            }
+            .coverSection {
+                height: 80vh;
+                padding-left: 10%;
+            }
+            .articleTexts {
+                width: 760px;
+            }
+            .features,
+            .reviews {
+                padding-left: 10%;
+            }
+        }
+        body {
+            background-color: #0C0C0C;
+            color: #fff;
+        }
+        a {
+            color: #fff;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            background-image: url(../dataset/imgs/doc-page.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: top;
+            background-attachment: fixed;
+        }
+        button {
+            cursor: pointer;
+        }
+        .magazineNavbar {
+            width: 100%;
+            height: 66px;
+            top: 0;
+            position: fixed;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: linear-gradient(180deg, rgba(17, 17, 17, 0.3) 0%, rgba(12, 12, 12, 0) 100%);
+            transition: background-color 0.5s ease-in-out;
+        }
+        .magazineNavbar.change {
+            background: rgba(12, 12, 12, 0.6);
+            backdrop-filter: blur(50px);
+        }
+        .magazineLogo {
+            width: 40px;
+        }
+        .magazineTitle {
+            font-weight: 500;
+            font-size: 22px;
+            line-height: 26px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .magazineTitle:hover {
+            color: rgb(255, 255, 255);
+        }
+        .coverSection {
+            background: linear-gradient(180deg, rgba(12, 12, 12, 0.5) 20%, rgb(12, 12, 12) 90%);
+            display: flex;
+            align-items: end;
+            text-align: justify;
+        }
+        .articleTexts {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-bottom: 5rem;
+        }
+        .mainTitle {
+            font-weight: 700;
+            font-size: var(--titulo--head);
+            line-height: var(--line-titulo);
+        }
+        .introText {
+            font-weight: 300;
+            font-size: var(--paragrafo);
+            line-height: var(--line-paragrafo);
+        }
+        .featuredArticles {
+            padding-top: 2rem;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            background-color: rgb(12, 12, 12);
+        }
+        .sectionTitle {
+            font-weight: 300;
+            font-size: 15px;
+            line-height: 18px;
+            color: #FFFFFF;
+        }
+        .features {
+            height: 200px;
+        }
+        .reviews {
+            padding-left: 10%;
+            padding-right: 10%;
+            margin-bottom: 5rem;
+        }
+        .carousel {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 30px; 
+            padding: 0 2rem; 
+            margin-bottom: 2rem;
+        }
+        .articleCard1,
+        .articleCard2,
+        .articleCard3,
+        .articleCard4 {
+            min-width: 345px;
+            height: 109px;
+            background: #101010;
+            border: 0.5px solid #4E4E4E;
+            border-radius: 20px;
+            padding: 10px 0px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 20px;
+        }
+        .articleCard1 img,
+        .articleCard2 img,
+        .articleCard3 img,
+        .articleCard4 img {
+            padding: 10px;
+            width: 30%; 
+            height: 100%; 
+            object-fit: cover; 
+            border-radius: 20px;
+        }
+        .articleCard1:hover,
+        .articleCard2:hover,
+        .articleCard3:hover,
+        .articleCard4:hover {
+            box-shadow: 7px 5px 56px -14px #202020;
+        }
+        .articleTitle {
+            font-weight: 700;
+            font-size: 20px;
+        }
+        .articleCategory {
+            font-weight: 300;
+            font-size: 10px;
+        }
+        .reviewCard1,
+        .reviewCard2,
+        .reviewCard3,
+        .reviewCard4 {
+            width: 345px;
+            height: 245px;
+            padding-top: 1px;
+            background: #101010;
+            border: 0.5px solid #4E4E4E;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+        .reviewCard1 .reviewImage1,
+        .reviewCard2 .reviewImage2,
+        .reviewCard3 .reviewImage3,
+        .reviewCard4 .reviewImage4 {
+            margin-top: 10px;
+            width: 330px;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+        .reviewCard1 img,
+        .reviewCard2 img,
+        .reviewCard3 img,
+        .reviewCard4 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .reviewCard1:hover,
+        .reviewCard2:hover,
+        .reviewCard3:hover,
+        .reviewCard4:hover {
+            box-shadow: 7px 5px 56px -14px #202020;
+        }
+        .reviewActionBar {
+            padding: 5px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            align-items: center;
+            gap: 15px;
+        }
+        footer {
+            background-color: #0C0C0C;
+            height: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        @keyframes slideInFromBottom {
+            0% {
+                transform: translateY(100%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body id="magazineBody">
+    <div class="magazineContainer">
+        <main>
+            <nav class="magazineNavbar">
+                <a href="../index.html">
+                    <img src="../dataset/imgs/page/icon.png" class="magazineLogo">
+                </a>
+                <div class="navWrapper">
+                    <p class="magazineTitle">Docs Center</p>
+                </div>
+                <div></div>
+            </nav>
+            <header>
+                <section class="coverSection" id="coverSection">
+                    <div class="articleTexts">
+                        <div>
+                            <p class="mainTitle">STAY UPDATED</p>
+                            <p class="introText" id="introText">
+                            Discover the latest articles, features, and reviews from various categories such as Security, Technology, Programming, and more...
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </header>
+            <section class="featuredArticles">
+                <section class="features">
+                    <p class="mainTitle">Top Articles <span class="sectionTitle">MOST POPULAR READS</span></p>
+                    <div class="carousel top-articles"></div>
+                </section>
+                <section class="reviews">
+                    <p class="mainTitle">Latest Reviews <span class="sectionTitle">READ THE LATEST REVIEWS</span></p>
+                    <div class="carousel latest-reviews"></div>
+                </section>
+                <footer>
+                    <a href="https://github.com/amiriiw" target="_blank">
+                        <p class="magazineTitle">@amiriiw on GitHub</p>
+                    </a>
+                </footer>
+            </section>
+        </main>
+    </div>
+<script>
+async function fetchContent() {
+    const username = 'amiriiw';
+    const repo = 'amiriiw.github.io';
+
+    const topArticlesPath = 'dataset/imgs/magazines';
+    const latestReviewsPath = 'dataset/imgs/magazines';
+
+    await fetchAndRenderSection(username, repo, topArticlesPath, '.carousel.top-articles', 'Top Articles', 4);
+    await fetchAndRenderSection(username, repo, latestReviewsPath, '.carousel.latest-reviews', 'Latest Reviews');
+}
+
+async function fetchAndRenderSection(username, repo, path, containerSelector, categoryName, limit = null) {
+    const url = `https://api.github.com/repos/${username}/${repo}/contents/${path}`;
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+
+        const selectedData = limit ? getRandomItems(data.filter(item => item.type === 'file' && item.name.endsWith('.png')), limit) : data;
+
+        const container = document.querySelector(containerSelector);
+        container.innerHTML = '';
+
+        selectedData.forEach(item => {
+            const articleCard = document.createElement('div');
+            articleCard.className = 'articleCard';
+
+            const imageUrl = `https://raw.githubusercontent.com/${username}/${repo}/main/${item.path}`;
+            const mdUrl = `https://github.com/${username}/${repo}/blob/main/${item.path.replace('imgs', 'Magazines').replace('.png', '.md')}`;
+
+            const [category, ...titleParts] = item.name.replace('.png', '').split('-');
+            const formattedTitle = titleParts.join(' ').replace(/([A-Z])/g, ' $1').trim();
+
+            articleCard.innerHTML = `
+                <div class="articleCard1" onclick="window.location.href='${mdUrl}';">
+                    <img src="${imageUrl}" alt="${item.name}">
+                    <div class="articleInfo">
+                        <p class="articleTitle">${formattedTitle}</p>
+                        <p class="articleCategory">${category}</p>
+                    </div>
+                </div>
+            `;
+            container.appendChild(articleCard);
+        });
+    } catch (error) {
+        console.error(`Error fetching ${categoryName}:`, error);
+    }
+}
+
+function getRandomItems(array, limit) {
+    const shuffled = array.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, limit);
+}
+
+document.addEventListener('DOMContentLoaded', fetchContent);
+</script>
+</body>
+</html>
