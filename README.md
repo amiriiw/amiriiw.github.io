@@ -3,13 +3,9 @@
 Welcome to my personal developer portfolio hosted on GitHub Pages:
 🌐 [amiriiw.github.io](https://amiriiw.github.io)
 
----
-
 ## 🔎 About
 
 My name is Amir, an open-source fan, just a developer. I’m not a big fan of design, but I’m actually pretty good at it. I enjoy my work as long as my tea isn’t finished. If you have any questions, feel free to contact me and ask.
-
----
 
 ## 🛠️ Features
 
@@ -19,8 +15,6 @@ My name is Amir, an open-source fan, just a developer. I’m not a big fan of de
 - Social links (GitHub, Telegram, X, Gmail)
 - Copy-to-clipboard button for repository links
 - Fully responsive for mobile and desktop views
-
----
 
 ## 📁 Project Structure
 
@@ -32,14 +26,10 @@ My name is Amir, an open-source fan, just a developer. I’m not a big fan of de
 └── public/            # Social and UI icons
 ```
 
----
-
 ## 🖼️ Live Preview
 
 You can view the live version at:
 🔗 **[amiriiw.github.io](https://amiriiw.github.io)**
-
----
 
 ## 📬 Contact
 
@@ -50,12 +40,8 @@ Feel free to reach out or connect:
 - 🐦 [x.com/awmiriiw](https://x.com/awmiriiw)
 - 💻 [github.com/amiriiw](https://github.com/amiriiw)
 
----
-
 ## 📝 License
 
 This project is open-source and available under the [MIT License](https://opensource.org/licenses/MIT).
-
----
 
 Thanks for visiting! ☕
