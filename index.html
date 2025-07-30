@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CV Page</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+          <a href="index.html">AMIR</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+      </ul>
+    </div>
+  </nav>
+  <header class="hero-section">
+    <div class="hero-bg"></div>
+    <div class="introduction-content">
+      <div class="intro-text">
+        <h1 class="main-heading">
+          <a href="https://github.com/amiriiw">Amiriiw</a>
+        </h1>
+        <p class="description">Just a developer. ☕️</p>
+        <div class="social-icons">
+          <a href="mailto:awmiriiw@gmail.com" class="social-btn" target="_blank" aria-label="Email">
+            <img src="public/gmail.png" alt="Gmail Icon" class="icon-img">
+          </a>
+          <a href="https://x.com/awmiriiw" class="social-btn" target="_blank" aria-label="Twitter">
+            <img src="public/x.png" alt="Twitter Icon" class="icon-img">
+          </a>
+          <a href="https://t.me/awmiriiw" class="social-btn" target="_blank" aria-label="Telegram">
+            <img src="public/telegram.png" alt="Telegram Icon" class="icon-img">
+          </a>
+          <a href="https://github.com/amiriiw" class="social-btn" target="_blank" aria-label="Telegram">
+            <img src="public/github.png" alt="Telegram Icon" class="icon-img">
+          </a>
+        </div>
+        <div class="about-me">
+          <div class="about-content">
+            <span class="about-label">About Me:</span>
+            <p class="about-description">My name is Amir, an open-source fan, just a developer. I’m not a big fan of design, but I’m actually pretty good at it. I enjoy my work as long as my tea isn’t finished. If you have any questions, feel free to contact me and ask.  </p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-images">
+        <img src="public/img.png" alt="Activity Animation" class="activity-chart">
+      </div>
+    </div>
+  </header>
+  <section id="skills" class="skills-section">
+    <div class="skills-content">
+      <h2 class="skill-heading">Skills</h2>
+      <div class="skills-container" id="skillsContainer"></div>
+    </div>
+  </section>
+  <section id="projects" class="projects-section">
+    <div class="projects-content">
+      <h2 class="projects-heading">Projects</h2>
+      <div class="projects-container" id="projectsContainer"></div>
+    </div>
+  </section>
+  <footer class="footer">
+    <p><a href="https://github.com/amiriiw">Amiriiw on GitHub</a></p>
+  </footer>
+  <script>
+    const skills = ["C", "C++", "Python", "JavaScript", "HTML", "CSS", "Regex", "Flask", "REST APIs", "FastAPI", "Node.js", "React", "React Native", "Appwrite", "npm", "Machine Learning", "TensorFlow", "PyTorch", "OpenCV", "PostgreSQL", "MySQL", "SQLite", "Bash", "Linux", "Arch Linux", "Ubuntu", "Linux Mint", "Kali Linux", "Cryptography", "Web Crawlers", "Core Development", "Microservices", "Vim", "Git", "GitHub", "Postman", "Nginx", "Cloudflare", "Figma", "Arduino", "GTK", "Selenium", "Bots", "Discord", "Gmail API", "Markdown", "Stack Overflow", "Twitter API"];
+    const skillsContainer = document.getElementById('skillsContainer');
+    skills.forEach(skill => {
+      const skillCard = document.createElement('div');
+      skillCard.classList.add('skill-card');
+      skillCard.textContent = skill;
+      skillsContainer.appendChild(skillCard);
+    });
+
+    function createInfoItem(icon, value, link) {
+      const a = document.createElement('a');
+      a.href = link;
+      a.target = '_blank';
+      a.classList.add('info-link');
+      a.innerHTML = `<span class="icon">${icon}</span><span class="info-text">${value}</span>`;
+      return a;
+    }
+
+    const projectsContainer = document.getElementById('projectsContainer');
+    fetch('https://api.github.com/users/amiriiw/repos')
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(repo => {
+          const card = document.createElement('div');
+          card.classList.add('project-card');
+          card.style.position = 'relative';
+
+          const title = document.createElement('h3');
+          const titleLink = document.createElement('a');
+          titleLink.href = repo.html_url;
+          titleLink.textContent = repo.name;
+          titleLink.target = '_blank';
+          title.appendChild(titleLink);
+
+          const descContainer = document.createElement('div');
+          descContainer.classList.add('project-desc');
+          const desc = document.createElement('p');
+          desc.textContent = repo.description || 'No description available.';
+          descContainer.appendChild(desc);
+
+          const copyBtn = document.createElement('button');
+          copyBtn.classList.add('copy-btn');
+          copyBtn.innerHTML = '<img src="public/clip.png" alt="Copy Icon" class="icon-img">';
+          copyBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navigator.clipboard.writeText(repo.html_url);
+
+            const copyTag = document.createElement('span');
+            copyTag.textContent = "Link is copied";
+            copyTag.classList.add('copy-tag');
+            card.appendChild(copyTag);
+            setTimeout(() => {
+              copyTag.remove();
+            }, 4000);
+          });
+
+          card.appendChild(copyBtn);
+          card.appendChild(title);
+          card.appendChild(descContainer);
+
+          const cardFooter = document.createElement('div');
+          cardFooter.classList.add('card-footer');
+          const licenseLink = repo.license ? repo.html_url + "/blob/master/LICENSE" : "#";
+          cardFooter.appendChild(createInfoItem('<img src="public/balance.png" alt="License Icon" class="icon-img">', repo.license && repo.license.spdx_id !== "NOASSERTION" ? repo.license.spdx_id : "N/A", licenseLink));
+          const starLink = repo.html_url + "/stargazers";
+          cardFooter.appendChild(createInfoItem('<img src="public/star.png" alt="Star Icon" class="icon-img">', repo.stargazers_count, starLink));
+          const watchersLink = repo.html_url + "/watchers";
+          cardFooter.appendChild(createInfoItem('<img src="public/view.png" alt="Watchers Icon" class="icon-img">', repo.watchers_count, watchersLink));
+          const branchLink = repo.html_url + "/branches";
+          cardFooter.appendChild(createInfoItem('<img src="public/branch.png" alt="Branch Icon" class="icon-img">', repo.forks_count, branchLink));
+          const contributorsLink = repo.html_url + "/graphs/contributors";
+          cardFooter.appendChild(createInfoItem('<img src="public/contributors.png" alt="Contributors Icon" class="icon-img">', 0, contributorsLink));
+          
+          card.appendChild(cardFooter);
+          projectsContainer.appendChild(card);
+        });
+      })
+      .catch(err => console.error('Error fetching GitHub repos:', err));
+  </script>
+</body>
+</html>
